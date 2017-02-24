@@ -11,3 +11,11 @@ export function findAll(str) {
     heroes: JSON.parse(str)
   };
 }
+
+export function toggleGrid(force) {
+  if (force === undefined) {
+    return { type: 'SHOW_GRID@TOGGLE' };
+  }
+
+  return { type: 'SHOW_GRID@TOGGLE', force };
+}
