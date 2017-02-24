@@ -21,4 +21,22 @@ module('reducer', () => {
       reducer({ heroes: [heroOne], showGrid: false }, { type: 'SHOW_GRID@TOGGLE', force: false }),
       { heroes: [heroOne], showGrid: false });
   });
+
+  test('it can add heroes to an empty array', (assert) => {
+    assert.deepEqual(
+      reducer({ heroes: [], showGrid: false }, { type: 'HERO@CREATE_COMPLETE', hero: heroOne }),
+      { heroes: [heroOne], showGrid: false });
+    assert.deepEqual(
+      reducer({ heroes: [], showGrid: false }, { type: 'HERO@CREATE_COMPLETE', hero: heroTwo }),
+      { heroes: [heroTwo], showGrid: false });
+  });
+
+  test('it can add heroes to an empty array', (assert) => {
+    assert.deepEqual(
+      reducer({ heroes: [heroOne], showGrid: false }, { type: 'HERO@CREATE_COMPLETE', hero: heroOne }),
+      { heroes: [heroOne, heroOne], showGrid: false });
+    assert.deepEqual(
+      reducer({ heroes: [heroOne], showGrid: false }, { type: 'HERO@CREATE_COMPLETE', hero: heroTwo }),
+      { heroes: [heroOne, heroTwo], showGrid: false });
+  });
 });

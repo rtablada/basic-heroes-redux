@@ -4,6 +4,8 @@ function heroes(state, action) {
   switch (action.type) {
     case 'HERO@FINDALL_COMPLETE':
       return action.heroes;
+    case 'HERO@CREATE_COMPLETE':
+      return [...state, action.hero];
     default:
       return state || [];
   }
